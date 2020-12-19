@@ -43,6 +43,12 @@ Offline Functionality:
 When brought back online:
 
   * Offline entries should be added to tracker.
+  
+  ### **How the app was built** 
+  * Service Worker was used to make the app function offline
+  * Webpack and manifest.json were used to bundle files for compression
+  * MongoDB and Mongoose Schema were used to create, edit and get data from the backend
+  
 
 ### **Business Context** 
 Giving users a fast and easy way to track their money is important, but allowing them to access that information anytime is even more important. Having offline functionality is paramount to our applications success.
