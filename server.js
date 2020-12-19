@@ -4,7 +4,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -17,10 +17,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connecting to Mongo Atlas (running databse in the cloud)
-// workoutdb database
+// budget database
 const databaseUrl = `mongodb+srv://sareronald:${encodeURIComponent(
   process.env.MONGO_PWD
-)}@primarycluster0.sxdap.mongodb.net/workoutdb`;
+)}@primarycluster0.sxdap.mongodb.net/budget`;
 mongoose.connect(databaseUrl, {
   useNewUrlParser: true,
   useFindAndModify: false,
