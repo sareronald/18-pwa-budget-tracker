@@ -1,9 +1,7 @@
 // Implement service worker so that users can use the app offline.
 // The SW will need to cache static assets to display the app offline.
 // The SW should cache transaction data, using the cached data as a fallback
-// when the app is used offline. HINT: You should use two caches. One for the
-// static assets such ass html, css, js, images, etc; and another cache for
-// the dynamic data from requests to routes beginning with "/api".
+// when the app is used offline.
 
 const FILES_TO_CACHE = [
   "/",
@@ -37,6 +35,7 @@ self.addEventListener("activate", (event) => {
     caches
       .keys()
       .then((cacheNames) => {
+        // return array of cache names that are old to delete
         return cacheNames.filter(
           (cacheName) => !currentCaches.includes(cacheName)
         );
@@ -54,6 +53,7 @@ self.addEventListener("activate", (event) => {
 
 //  FETCH
 self.addEventListener("fetch", (event) => {
+  // non GET requests are not cached and requests to other origins are not cached
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
