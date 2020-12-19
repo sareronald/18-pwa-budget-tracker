@@ -1,16 +1,19 @@
 // Implement service worker so that users can use the app offline.
 // The SW will need to cache static assets to display the app offline.
 // The SW should cache transaction data, using the cached data as a fallback
-// when the app is used offline.
+// when the app is used offline. HINT: You should use two caches. One for the
+// static assets such ass html, css, js, images, etc; and another cache for
+// the dynamic data from requests to routes beginning with "/api".
 
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/styles.css",
   "/icons/icon-192x192.png",
-  "/icons/icons-512x512.png",
+  "/icons/icon-512x512.png",
   "/db.js",
   "/index.js",
+  "manifest.json",
   "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
   "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
 ];
