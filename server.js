@@ -20,18 +20,20 @@ app.use(express.static("public"));
 
 // Connecting to Mongo Atlas (running databse in the cloud)
 // budget database
-const databaseUrl = `mongodb+srv://sareronald:${encodeURIComponent(
-  process.env.MONGO_PWD
-)}@primarycluster0.sxdap.mongodb.net/budget`;
-mongoose.connect(databaseUrl, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-});
-
-// mongoose.connect("mongodb://localhost/budget", {
+// const databaseUrl = `mongodb+srv://sareronald:${encodeURIComponent(
+//   process.env.MONGO_PWD
+// )}@primarycluster0.sxdap.mongodb.net/budget`;
+// mongoose.connect(databaseUrl, {
 //   useNewUrlParser: true,
 //   useFindAndModify: false,
 // });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 // routes
 app.use(require("./routes/api.js"));
