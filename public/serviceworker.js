@@ -49,13 +49,14 @@ self.addEventListener("activate", (event) => {
 
 //  FETCH **
 self.addEventListener("fetch", (event) => {
-  // non GET requests are not cached and requests to other origins are not cached
+  // applies if the URL includes /api
   if (event.request.url.includes("/api/")) {
     console.log("/api/");
     event.respondWith(
       caches.open(DATA_CACHE_NAME).then((cache) => {
         console.log(cache);
         return fetch(event.request).then((response) => {
+          // if the response was good, clone it and store it in the cache
           if (response.status === 200)
             cache.put(event.request.url, response.clone());
           return response;
@@ -65,7 +66,7 @@ self.addEventListener("fetch", (event) => {
   } else {
     event.respondWith(
       fetch(event.request).catch(function () {
-        return caches.match(event.request).then(function (response) {
+        return caches.match(event.request).then((response) => {
           if (response) {
             return response;
           } else if (
