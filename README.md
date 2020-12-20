@@ -29,7 +29,7 @@ SO THAT my account balance is accurate when I am travelling
 
 ## Link to the App
 Please visit the <a href="https://github.com/sareronald/18-pwa-budget-tracker.git">GitHub repository</a> for a copy of the code for this project and application.<br>
-Please visit the <a href="">Budget Tracker</a> application, hosted on Heroku.
+Please visit the <a href="https://gentle-wildwood-94636.herokuapp.com/">Budget Tracker</a> application, hosted on Heroku.
 <br>
 
 ## About this project
@@ -90,19 +90,19 @@ To install this Budget Tracker:
 ```
 git@github.com:sareronald/18-pwa-budget-tracker.git
 ```
-1. Open a terminal window and navigate to the local directory. Run 
+2. Open a terminal window and navigate to the local directory. Run 
 ```
 npm install
 ```
-1. Create a new mongodb database called "budget".
-1. If running locally update the MONGODB_URI with your connection string in a .env file in the root directory of the application. Add the following entry:
+3. Create a new mongodb database called "budget".
+4. If running locally update the MONGODB_URI with your connection string in a .env file in the root directory of the application. Add the following entry:
 ```MONGODB_URI=connectionstring```, replacing _connectionstring_ with the string for your database.
 
 ## Usage
 #### **Instructions**
 1. Run ```npm start``` to start the application
 1. Open a web browser and navigate to https://localhost:3000
-1. Start entering your transactions - by entering a name, and transaction amount before clicking "+Add Funds" or "-Subtract Funds" depending on the nature of your trnsaction
+1. Start entering your transactions - by entering a name, and transaction amount before clicking "+Add Funds" or "-Subtract Funds" depending on the nature of your transaction.
 
 ## Screenshots
 #### **Walkthrough of application**
