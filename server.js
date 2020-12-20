@@ -1,3 +1,5 @@
+// Read and set any environment variables with the dotenv package
+require("dotenv").config();
 // require dependencies
 const express = require("express");
 const logger = require("morgan");
@@ -16,10 +18,20 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+// Connecting to Mongo Atlas (running databse in the cloud)
+// budget database
+const databaseUrl = `mongodb+srv://sareronald:${encodeURIComponent(
+  process.env.MONGO_PWD
+)}@primarycluster0.sxdap.mongodb.net/budget`;
+mongoose.connect(databaseUrl, {
   useNewUrlParser: true,
   useFindAndModify: false,
 });
+
+// mongoose.connect("mongodb://localhost/budget", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+// });
 
 // routes
 app.use(require("./routes/api.js"));
